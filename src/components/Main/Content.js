@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import { connect } from "react-redux";
 
-import { setFontSizeIncrease } from "../../state/store";
+import { setFontSizeIncrease, setThemeMode } from "../../state/store";
 
 const styles = theme => ({
   content: {
     color: theme.main.colors.content,
-    fontSize: props => `calc(${theme.main.fonts.content.size}em * ${props.fontSizeIncrease})`,
+    fontSize: "props => `calc(${theme.main.fonts.content.size}em * ${props.fontSizeIncrease})`",
     lineHeight: theme.main.fonts.content.lineHeight,
     "& a": {
       color: theme.base.colors.link
@@ -85,10 +85,15 @@ const styles = theme => ({
 });
 
 const Content = props => {
-  const { classes, html, children } = props;
+  const { classes, html, children, themeMode } = props;
 
   if (html) {
-    return <div className={classes.content} dangerouslySetInnerHTML={{ __html: html }} />;
+    return (
+      <div>
+        {themeMode}
+        <div className={classes.content} dangerouslySetInnerHTML={{ __html: html }}></div>
+      </div>
+    );
   } else {
     return <div className={classes.content}>{children}</div>;
   }
@@ -99,17 +104,21 @@ Content.propTypes = {
   html: PropTypes.string,
   children: PropTypes.node,
   setFontSizeIncrease: PropTypes.func.isRequired,
-  fontSizeIncrease: PropTypes.number.isRequired
+  setThemeMode: PropTypes.func.isRequired,
+  fontSizeIncrease: PropTypes.number.isRequired,
+  themeMode: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    fontSizeIncrease: state.fontSizeIncrease
+    fontSizeIncrease: state.fontSizeIncrease,
+    themeMode: state.themeMode
   };
 };
 
 const mapDispatchToProps = {
-  setFontSizeIncrease
+  setFontSizeIncrease,
+  setThemeMode
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Content));

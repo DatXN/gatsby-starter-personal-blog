@@ -12,6 +12,7 @@ const SET_IS_WIDE_SCREEN = "SET_IS_WIDE_SCREEN";
 const SET_SCROLL_TO_TOP = "SET_SCROLL_TO_TOP";
 const SET_FONT_SIZE_INCREASE = "SET_FONT_SIZE_INCREASE";
 const SET_CATEGORY_FILTER = "SET_CATEGORY_FILTER";
+const SET_THEME_MODE = "SET_THEME_MODE";
 
 /*
  * action creators
@@ -43,6 +44,10 @@ export function setFontSizeIncrease(val) {
 
 export function setCategoryFilter(val) {
   return { type: SET_CATEGORY_FILTER, val };
+}
+
+export function setThemeMode(val) {
+  return { type: SET_THEME_MODE, val };
 }
 
 /*
@@ -86,6 +91,12 @@ const reducer = (state, action) => {
         fontSizeIncrease: action.val
       };
 
+    case SET_THEME_MODE:
+      return {
+        ...state,
+        themeMode: action.val
+      };
+
     case SET_CATEGORY_FILTER:
       return {
         ...state,
@@ -104,7 +115,8 @@ const initialState = {
   isWideScreen: false,
   scrollToTop: false,
   fontSizeIncrease: 1,
-  categoryFilter: "all posts"
+  categoryFilter: "all posts",
+  themeMode: "light"
 };
 
 const createStore = () =>

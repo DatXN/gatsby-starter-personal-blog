@@ -12,12 +12,15 @@ import SearchIcon from "@material-ui/icons/Search";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
 import FullscreenExitIcon from "@material-ui/icons/FullscreenExit";
+import LightModeIcon from "@material-ui/icons/WbSunny";
+import DarkModeIcon from "@material-ui/icons/Brightness2";
 
 import {
   setNavigatorPosition,
   setNavigatorShape,
   setScrollToTop,
   setFontSizeIncrease,
+  setThemeMode,
   setCategoryFilter
 } from "../../state/store";
 import { featureNavigator, moveNavigatorAside } from "./../../utils/shared";
@@ -106,6 +109,7 @@ class ActionsBar extends React.Component {
   };
 
   arrowUpOnClick = () => {
+    debugger;
     this.props.setScrollToTop(true);
   };
 
@@ -121,8 +125,31 @@ class ActionsBar extends React.Component {
     this.props.setCategoryFilter(val);
   };
 
+  themeModeSetOnClick = val => {
+    var userTheme =
+      (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
+    if (userTheme === null) {
+      userTheme = "light";
+    } else {
+      userTheme = userTheme === "light" ? "dark" : "light";
+    }
+
+    this.props.setThemeMode(userTheme);
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("theme-mode", userTheme);
+    }
+    console.log(userTheme);
+  };
+
   render() {
-    const { classes, navigatorPosition, navigatorShape, isWideScreen, categories } = this.props;
+    const {
+      classes,
+      navigatorPosition,
+      navigatorShape,
+      isWideScreen,
+      categories,
+      themeMode
+    } = this.props;
 
     return (
       <div className={classes.actionsBar}>
@@ -148,6 +175,14 @@ class ActionsBar extends React.Component {
             className={classes.button}
           >
             <SearchIcon className={classes.button} />
+          </IconButton>
+          <IconButton
+            aria-label={this.state.lightTheme ? "ActivateDarkMode" : "ActivateLightMode"}
+            onClick={this.themeModeSetOnClick}
+            title={this.state.lightTheme ? "Activate dark mode" : "Activate light mode"}
+            className={classes.button}
+          >
+            {themeMode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
           </IconButton>
         </div>
         <div className={classes.group}>
@@ -178,9 +213,11 @@ ActionsBar.propTypes = {
   isWideScreen: PropTypes.bool.isRequired,
   setScrollToTop: PropTypes.func.isRequired,
   setFontSizeIncrease: PropTypes.func.isRequired,
+  setThemeMode: PropTypes.func.isRequired,
   categories: PropTypes.array.isRequired,
   setCategoryFilter: PropTypes.func.isRequired,
-  categoryFilter: PropTypes.string.isRequired
+  categoryFilter: PropTypes.string.isRequired,
+  themeMode: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -188,7 +225,8 @@ const mapStateToProps = (state, ownProps) => {
     navigatorPosition: state.navigatorPosition,
     navigatorShape: state.navigatorShape,
     isWideScreen: state.isWideScreen,
-    categoryFilter: state.categoryFilter
+    categoryFilter: state.categoryFilter,
+    themeMode: state.themeMode
   };
 };
 
@@ -197,6 +235,7 @@ const mapDispatchToProps = {
   setNavigatorShape,
   setScrollToTop,
   setFontSizeIncrease,
+  setThemeMode,
   setCategoryFilter
 };
 

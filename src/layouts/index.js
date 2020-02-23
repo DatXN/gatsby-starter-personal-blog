@@ -9,7 +9,7 @@ import withRoot from "../withRoot";
 import theme from "../styles/theme";
 import globals from "../styles/globals";
 
-import { setFontSizeIncrease, setIsWideScreen } from "../state/store";
+import { setFontSizeIncrease, setThemeMode, setIsWideScreen } from "../state/store";
 
 import asyncComponent from "../components/common/AsyncComponent/";
 import Loading from "../components/common/Loading/";
@@ -99,20 +99,24 @@ Layout.propTypes = {
   setIsWideScreen: PropTypes.func.isRequired,
   isWideScreen: PropTypes.bool.isRequired,
   fontSizeIncrease: PropTypes.number.isRequired,
-  setFontSizeIncrease: PropTypes.func.isRequired
+  setFontSizeIncrease: PropTypes.func.isRequired,
+  setThemeMode: PropTypes.func.isRequired,
+  themeMode: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
     pages: state.pages,
     isWideScreen: state.isWideScreen,
-    fontSizeIncrease: state.fontSizeIncrease
+    fontSizeIncrease: state.fontSizeIncrease,
+    themeMode: state.themeMode
   };
 };
 
 const mapDispatchToProps = {
   setIsWideScreen,
-  setFontSizeIncrease
+  setFontSizeIncrease,
+  setThemeMode
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRoot(injectSheet(globals)(Layout)));
