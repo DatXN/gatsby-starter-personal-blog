@@ -35,7 +35,8 @@ const styles = theme => ({
       },
       ".is-aside.open &": {
         left: "8%",
-        top: "0"
+        marginLeft: "-40px",
+        top: "-10px"
       }
     }
   },
@@ -57,7 +58,11 @@ const styles = theme => ({
     },
     [`@media (min-width: ${theme.mediaQueryTresholds.L}px)`]: {
       width: "100px",
-      height: "100px"
+      height: "100px",
+      ".is-aside.open &": {
+        width: "80px",
+        height: "80px"
+      }
     },
     "@media (hover: hover)": {
       "&:hover": {
@@ -96,7 +101,7 @@ const styles = theme => ({
   },
   expand: {
     position: "absolute",
-    top: "30px",
+    top: "10px",
     right: "-25px",
     display: "none",
     color: theme.info.colors.text,

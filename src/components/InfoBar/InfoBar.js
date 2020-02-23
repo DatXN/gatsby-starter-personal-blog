@@ -52,7 +52,8 @@ const styles = theme => ({
     width: "36px",
     borderRadius: "65% 75%",
     border: "1px solid #ddd",
-    height: "36px"
+    height: "36px",
+    top: "-3px"
   }
 });
 
@@ -98,7 +99,4 @@ const mapDispatchToProps = {
   setNavigatorPosition
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectSheet(styles)(InfoBar));
+export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(InfoBar));

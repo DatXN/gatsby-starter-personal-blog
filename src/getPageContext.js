@@ -8,8 +8,7 @@ import themeLight from "./styles/theme";
 
 function createPageContext() {
   let userTheme = (typeof window !== "undefined" && window.localStorage.getItem("theme")) || null;
-  let theme = userTheme === "light" ? themeLight : themeDark;
-  debugger;
+  let theme = userTheme === "dark" ? themeLight : themeDark;
   return {
     theme,
     // This is needed in order to deduplicate the injection of CSS in the page.

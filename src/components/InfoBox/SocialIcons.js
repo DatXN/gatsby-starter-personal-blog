@@ -39,7 +39,6 @@ const Socialcons = props => {
     facebook: FacebookIcon,
     github: GithubIcon
   };
-
   return (
     <div className={classes.social}>
       {items.map(item => {

@@ -115,10 +115,7 @@ const mapDispatchToProps = {
   setFontSizeIncrease
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRoot(injectSheet(globals)(Layout)));
+export default connect(mapStateToProps, mapDispatchToProps)(withRoot(injectSheet(globals)(Layout)));
 
 //eslint-disable-next-line no-undef
 export const guery = graphql`

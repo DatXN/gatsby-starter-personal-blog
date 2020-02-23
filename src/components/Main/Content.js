@@ -112,7 +112,4 @@ const mapDispatchToProps = {
   setFontSizeIncrease
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectSheet(styles)(Content));
+export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Content));

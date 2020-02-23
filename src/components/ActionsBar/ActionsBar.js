@@ -200,7 +200,4 @@ const mapDispatchToProps = {
   setCategoryFilter
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectSheet(styles)(ActionsBar));
+export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(ActionsBar));
