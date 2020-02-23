@@ -27,7 +27,7 @@ const styles = theme => ({
       position: "absolute",
       top: "10px",
       left: "50%",
-      marginLeft: "-30px",
+      marginLeft: "-50px",
       transition: "all .5s",
       transitionTimingFunction: "ease",
       ".navigator-in-transition-from.navigator-is-opened &": {
@@ -42,7 +42,7 @@ const styles = theme => ({
   avatar: {
     width: "36px",
     height: "36px",
-    borderRadius: "65% 75%",
+    borderRadius: "100% 100%",
     border: "1px solid #ddd",
     transition: "all .3s",
     transitionTimingFunction: "ease",
@@ -56,8 +56,8 @@ const styles = theme => ({
       height: "44px"
     },
     [`@media (min-width: ${theme.mediaQueryTresholds.L}px)`]: {
-      width: "60px",
-      height: "60px"
+      width: "100px",
+      height: "100px"
     },
     "@media (hover: hover)": {
       "&:hover": {
@@ -82,7 +82,7 @@ const styles = theme => ({
     [`@media (min-width: ${theme.mediaQueryTresholds.L}px)`]: {
       fontSize: `${theme.info.fonts.boxTitleSizeL}em`,
       position: "absolute",
-      top: "85px",
+      top: "130px",
       textAlign: "center",
       left: "50%",
       transform: "translate(-50%)",

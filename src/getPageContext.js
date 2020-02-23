@@ -3,9 +3,13 @@
 import { SheetsRegistry } from "jss";
 import { createGenerateClassName } from "@material-ui/core/styles";
 
-import theme from "./styles/theme";
+import themeDark from "./styles/new-theme";
+import themeLight from "./styles/theme";
 
 function createPageContext() {
+  let userTheme = (typeof window !== "undefined" && window.localStorage.getItem("theme")) || null;
+  let theme = userTheme === "light" ? themeLight : themeDark;
+  debugger;
   return {
     theme,
     // This is needed in order to deduplicate the injection of CSS in the page.
