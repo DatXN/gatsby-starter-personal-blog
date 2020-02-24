@@ -3,15 +3,8 @@
 import { SheetsRegistry } from "jss";
 import { createGenerateClassName } from "@material-ui/core/styles";
 
-import themeDark from "./styles/new-theme";
-import themeLight from "./styles/theme";
-import theme from "./styles/theme";
-
 function createPageContext() {
-  let userTheme = (typeof window !== "undefined" && window.localStorage.getItem("theme")) || null;
-  //let theme = userTheme === "dark" ? themeLight : themeDark;
   return {
-    theme,
     // This is needed in order to deduplicate the injection of CSS in the page.
     sheetsManager: new Map(),
     // This is needed in order to inject the critical CSS.

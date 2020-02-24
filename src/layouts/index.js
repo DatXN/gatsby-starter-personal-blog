@@ -5,20 +5,24 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import withRoot from "../withRoot";
-
-import theme from "../styles/theme";
 import globals from "../styles/globals";
-
 import { setFontSizeIncrease, setThemeMode, setIsWideScreen } from "../state/store";
-
 import asyncComponent from "../components/common/AsyncComponent/";
 import Loading from "../components/common/Loading/";
 import Navigator from "../components/Navigator/";
 import ActionsBar from "../components/ActionsBar/";
 import InfoBar from "../components/InfoBar/";
 import LayoutWrapper from "../components/LayoutWrapper/";
-
 import { isWideScreen, timeoutThrottlerHandler } from "../utils/helpers";
+// Dynamic theme
+import themeLight from "../styles/theme";
+import themeDark from "../styles/new-theme";
+var userTheme =
+  (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
+if (userTheme === null) {
+  userTheme = "light";
+}
+const theme = userTheme === "light" ? themeLight : themeDark;
 
 const InfoBox = asyncComponent(
   () =>

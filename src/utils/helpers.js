@@ -1,4 +1,12 @@
-import theme from "../styles/theme";
+// Dynamic theme
+import themeLight from "../styles/theme";
+import themeDark from "../styles/new-theme";
+var userTheme =
+  (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
+if (userTheme === null) {
+  userTheme = "light";
+}
+const theme = userTheme === "light" ? themeLight : themeDark;
 
 export function isWideScreen() {
   if (typeof window !== `undefined`) {
