@@ -1,5 +1,6 @@
 import { createStore as reduxCreateStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { getCurrentThemeModeName } from "../utils/helpers";
 
 /*
  * action types
@@ -107,11 +108,8 @@ const reducer = (state, action) => {
       return state;
   }
 };
-var userTheme =
-  (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
-if (userTheme === null) {
-  userTheme = "light";
-}
+
+var userTheme = getCurrentThemeModeName();
 
 const initialState = {
   navigatorPosition: "is-aside",

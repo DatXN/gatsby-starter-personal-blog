@@ -1,9 +1,7 @@
 import React from "react";
 import injectSheet from "react-jss";
-import { MuiThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 import withRoot from "../withRoot";
 import globals from "../styles/globals";
 import { setFontSizeIncrease, setThemeMode, setIsWideScreen } from "../state/store";
@@ -13,16 +11,8 @@ import Navigator from "../components/Navigator/";
 import ActionsBar from "../components/ActionsBar/";
 import InfoBar from "../components/InfoBar/";
 import LayoutWrapper from "../components/LayoutWrapper/";
-import { isWideScreen, timeoutThrottlerHandler } from "../utils/helpers";
-// Dynamic theme
-import themeLight from "../styles/theme";
-import themeDark from "../styles/new-theme";
-var userTheme =
-  (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
-if (userTheme === null) {
-  userTheme = "light";
-}
-const theme = userTheme === "light" ? themeLight : themeDark;
+import { isWideScreen, timeoutThrottlerHandler, getCurrentThemeMode } from "../utils/helpers";
+var theme = getCurrentThemeMode();
 
 const InfoBox = asyncComponent(
   () =>
@@ -123,7 +113,10 @@ const mapDispatchToProps = {
   setThemeMode
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRoot(injectSheet(globals)(Layout)));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRoot(injectSheet(globals)(Layout)));
 
 //eslint-disable-next-line no-undef
 export const guery = graphql`

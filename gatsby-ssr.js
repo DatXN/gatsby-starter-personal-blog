@@ -7,10 +7,7 @@ require("dotenv").config();
 
 import getPageContext from "./src/getPageContext";
 import createStore from "./src/state/store";
-
-// Dynamic theme
-import themeLight from "./src/styles/theme";
-import themeDark from "./src/styles/new-theme";
+import { getCurrentThemeMode } from "./src/utils/helpers";
 
 exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
   const pageContext = getPageContext();
@@ -46,13 +43,7 @@ exports.onRenderBody = ({ setHeadComponents }) => {
 };
 
 exports.onRenderBody = ({ setPostBodyComponents }) => {
-  console.log("1");
-  var userTheme =
-    (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
-  if (userTheme === null) {
-    userTheme = "light";
-  }
-  const theme = userTheme === "light" ? themeLight : themeDark;
+  const theme = getCurrentThemeMode();
 
   return setPostBodyComponents([
     <script

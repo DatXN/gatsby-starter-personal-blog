@@ -9,7 +9,7 @@ import { setFontSizeIncrease, setThemeMode } from "../../state/store";
 const styles = theme => ({
   content: {
     color: theme.main.colors.content,
-    fontSize: "props => `calc(${theme.main.fonts.content.size}em * ${props.fontSizeIncrease})`",
+    fontSize: props => `calc(${theme.main.fonts.content.size}em * ${props.fontSizeIncrease})`,
     lineHeight: theme.main.fonts.content.lineHeight,
     "& a": {
       color: theme.base.colors.link

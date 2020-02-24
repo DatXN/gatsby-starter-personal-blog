@@ -1,15 +1,7 @@
-// Dynamic theme
-import themeLight from "./theme";
-import themeDark from "./new-theme";
+import { getCurrentThemeMode } from "../utils/helpers";
 
 const Global = () => {
-  var userTheme =
-    (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
-  if (userTheme === null) {
-    userTheme = "light";
-  }
-  const theme = userTheme === "light" ? themeLight : themeDark;
-  console.log(userTheme);
+  const theme = getCurrentThemeMode();
   return {
     /*
       BEGINNING OF NORMALIZE STYLE

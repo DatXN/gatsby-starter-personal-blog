@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import getPageContext from "./getPageContext";
-import themeDark from "./styles/new-theme";
-import themeLight from "./styles/theme";
+import { getCurrentThemeMode } from "./utils/helpers";
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
@@ -26,8 +25,7 @@ function withRoot(Component) {
 
     render() {
       // MuiThemeProvider makes the theme available down the React tree thanks to React context.
-      var theme = this.props.themeMode === "dark" ? themeDark : themeLight;
-      console.log(this.props.themeMode);
+      var theme = getCurrentThemeMode(null, null, this.props);
 
       return (
         <MuiThemeProvider theme={theme} sheetsManager={this.pageContext.sheetsManager}>
