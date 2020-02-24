@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import withRoot from "../withRoot";
 import globals from "../styles/globals";
-import { setFontSizeIncrease, setThemeMode, setIsWideScreen } from "../state/store";
+import { setFontSizeIncrease, setIsWideScreen } from "../state/store";
 import asyncComponent from "../components/common/AsyncComponent/";
 import Loading from "../components/common/Loading/";
 import Navigator from "../components/Navigator/";
@@ -94,7 +94,6 @@ Layout.propTypes = {
   isWideScreen: PropTypes.bool.isRequired,
   fontSizeIncrease: PropTypes.number.isRequired,
   setFontSizeIncrease: PropTypes.func.isRequired,
-  setThemeMode: PropTypes.func.isRequired,
   themeMode: PropTypes.string.isRequired
 };
 
@@ -109,8 +108,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = {
   setIsWideScreen,
-  setFontSizeIncrease,
-  setThemeMode
+  setFontSizeIncrease
 };
 
 export default connect(

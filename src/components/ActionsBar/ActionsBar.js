@@ -126,10 +126,9 @@ class ActionsBar extends React.Component {
       (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
     if (userTheme === null) {
       userTheme = "light";
-    } else {
-      userTheme = userTheme === "light" ? "dark" : "light";
     }
-
+    // opposite theme (click)
+    userTheme = userTheme === "light" ? "dark" : "light";
     this.props.setThemeMode(userTheme);
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("theme-mode", userTheme);

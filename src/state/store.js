@@ -109,7 +109,7 @@ const reducer = (state, action) => {
   }
 };
 
-var userTheme = getCurrentThemeModeName();
+var defaultThemeModeName = getCurrentThemeModeName();
 
 const initialState = {
   navigatorPosition: "is-aside",
@@ -119,7 +119,7 @@ const initialState = {
   scrollToTop: false,
   fontSizeIncrease: 1,
   categoryFilter: "all posts",
-  themeMode: userTheme
+  themeMode: defaultThemeModeName
 };
 
 const createStore = () =>

@@ -25,7 +25,7 @@ function withRoot(Component) {
 
     render() {
       // MuiThemeProvider makes the theme available down the React tree thanks to React context.
-      var theme = getCurrentThemeMode(null, null, this.props);
+      var theme = getCurrentThemeMode();
 
       return (
         <MuiThemeProvider theme={theme} sheetsManager={this.pageContext.sheetsManager}>
@@ -38,8 +38,7 @@ function withRoot(Component) {
   }
 
   WithRoot.propTypes = {
-    pageContext: PropTypes.object,
-    themeMode: PropTypes.string.isRequired
+    pageContext: PropTypes.object
   };
 
   return WithRoot;

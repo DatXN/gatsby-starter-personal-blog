@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import { connect } from "react-redux";
 
-import { setFontSizeIncrease, setThemeMode } from "../../state/store";
+import { setFontSizeIncrease } from "../../state/store";
 
 const styles = theme => ({
   content: {
@@ -100,7 +100,6 @@ Content.propTypes = {
   html: PropTypes.string,
   children: PropTypes.node,
   setFontSizeIncrease: PropTypes.func.isRequired,
-  setThemeMode: PropTypes.func.isRequired,
   fontSizeIncrease: PropTypes.number.isRequired,
   themeMode: PropTypes.string.isRequired
 };
@@ -113,8 +112,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = {
-  setFontSizeIncrease,
-  setThemeMode
+  setFontSizeIncrease
 };
 
 export default connect(
