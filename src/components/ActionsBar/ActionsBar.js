@@ -109,7 +109,6 @@ class ActionsBar extends React.Component {
   };
 
   arrowUpOnClick = () => {
-    debugger;
     this.props.setScrollToTop(true);
   };
 
@@ -177,9 +176,9 @@ class ActionsBar extends React.Component {
             <SearchIcon className={classes.button} />
           </IconButton>
           <IconButton
-            aria-label={this.state.lightTheme ? "ActivateDarkMode" : "ActivateLightMode"}
+            aria-label={themeMode === "light" ? "ActivateDarkMode" : "ActivateLightMode"}
             onClick={this.themeModeSetOnClick}
-            title={this.state.lightTheme ? "Activate dark mode" : "Activate light mode"}
+            title={themeMode === "light" ? "Activate dark mode" : "Activate light mode"}
             className={classes.button}
           >
             {themeMode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
@@ -239,4 +238,7 @@ const mapDispatchToProps = {
   setCategoryFilter
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(ActionsBar));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectSheet(styles)(ActionsBar));

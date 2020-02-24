@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
@@ -85,15 +86,10 @@ const styles = theme => ({
 });
 
 const Content = props => {
-  const { classes, html, children, themeMode } = props;
+  const { classes, html, children } = props;
 
   if (html) {
-    return (
-      <div>
-        {themeMode}
-        <div className={classes.content} dangerouslySetInnerHTML={{ __html: html }}></div>
-      </div>
-    );
+    return <div className={classes.content} dangerouslySetInnerHTML={{ __html: html }} />;
   } else {
     return <div className={classes.content}>{children}</div>;
   }
@@ -121,4 +117,7 @@ const mapDispatchToProps = {
   setThemeMode
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Content));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectSheet(styles)(Content));

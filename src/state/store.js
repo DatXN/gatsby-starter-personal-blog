@@ -107,6 +107,11 @@ const reducer = (state, action) => {
       return state;
   }
 };
+var userTheme =
+  (typeof window !== "undefined" && window.localStorage.getItem("theme-mode")) || null;
+if (userTheme === null) {
+  userTheme = "light";
+}
 
 const initialState = {
   navigatorPosition: "is-aside",
@@ -116,7 +121,7 @@ const initialState = {
   scrollToTop: false,
   fontSizeIncrease: 1,
   categoryFilter: "all posts",
-  themeMode: "light"
+  themeMode: userTheme
 };
 
 const createStore = () =>
